@@ -1,0 +1,31 @@
+@use "mixins" as m;
+
+.footer {
+  margin-top: var(--space-4xl);
+  padding-block: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+
+  @include m.mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+}
+
+.copy {
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}

@@ -1,0 +1,8 @@
+// Breakpoints used by media-query mixins.
+// Color tokens, spacing, transitions, z-index live as CSS Custom Properties
+// in `globals.scss` so they're available in every module without imports.
+
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 992px;
+$breakpoint-desktop: 1200px;

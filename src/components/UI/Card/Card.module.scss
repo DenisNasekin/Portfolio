@@ -1,0 +1,19 @@
+.card {
+  position: relative;
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  transition: border-color var(--transition-base), transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.interactive {
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px var(--color-shadow);
+  }
+}

@@ -1,0 +1,102 @@
+@use "reset";
+
+:root {
+  // Typography
+  --font-display: var(--font-inter), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  // Spacing scale
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+  --space-4xl: 8rem;
+
+  // Layout
+  --container-max: 1200px;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  // Motion
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  // Z-index
+  --z-base: 1;
+  --z-header: 100;
+  --z-overlay: 500;
+  --z-modal: 1000;
+
+  // Accent (shared across themes)
+  --color-accent: #7c3aed;
+  --color-accent-hover: #8b5cf6;
+}
+
+// Dark theme — default if the bootstrap script can't read prefs.
+:root,
+[data-theme="dark"] {
+  --color-background: #0b0f19;
+  --color-surface: #0f1424;
+  --color-card: #111827;
+  --color-text: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --color-shadow: rgba(0, 0, 0, 0.4);
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --color-background: #fafafa;
+  --color-surface: #ffffff;
+  --color-card: #f3f4f6;
+  --color-text: #0b0f19;
+  --color-text-secondary: #52525b;
+  --color-border: rgba(11, 15, 25, 0.08);
+  --color-border-strong: rgba(11, 15, 25, 0.16);
+  --color-shadow: rgba(11, 15, 25, 0.08);
+
+  color-scheme: light;
+}
+
+html {
+  background: var(--color-background);
+  color: var(--color-text);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
