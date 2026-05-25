@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 
 /**
- * Tracks which section is currently in view by observing elements with
- * matching ids. Returns the id of the most prominent section, or null
- * before any has been seen.
+ * Tracks which section is currently in view. Uses IntersectionObserver with
+ * a wider active band than the typical "-40% 0px -50% 0px" rootMargin —
+ * Lenis-driven scrolling can suppress fine-grained intersection updates,
+ * so a 25% band is the sweet spot between accuracy and reliability.
  */
 export function useActiveSection(ids: readonly string[]): string | null {
   const [active, setActive] = useState<string | null>(null);
@@ -19,12 +20,13 @@ export function useActiveSection(ids: readonly string[]): string | null {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActive(visible[0].target.id);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
       },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+      // Active band: 30% from the top to 55% from the bottom — i.e. the
+      // upper-middle of the viewport, where the reader's focus usually sits.
+      { rootMargin: "-30% 0px -55% 0px", threshold: 0 },
     );
 
     elements.forEach((el) => observer.observe(el));

@@ -34,6 +34,44 @@ export const translations = {
       ctaProjects: "Смотреть проекты",
       ctaGithub: "GitHub",
     },
+    about: {
+      eyebrow: "Обо мне",
+      titleBefore: "Превращаю задачу",
+      titleHighlight: "в готовый",
+      titleAfter: "продукт",
+      description:
+        "Чистый код, аккуратная анимация, забота о скорости и деталях. Без воды.",
+      bio: [
+        [
+          { kind: "text", value: "Работаю удалённо, в продакшене — " },
+          { kind: "accent", value: "три года" },
+          {
+            kind: "text",
+            value: ". Прошёл путь от лендингов до CRM-систем и крупных приложений.",
+          },
+        ],
+        [
+          { kind: "text", value: "В активе — " },
+          { kind: "accent", value: "10+ сайтов и магазинов" },
+          { kind: "text", value: ", " },
+          { kind: "accent", value: "3 серьёзных продукта" },
+          {
+            kind: "text",
+            value:
+              ". Беру задачу — отдаю готовое: чистый код, аккуратная анимация, забота о скорости и деталях.",
+          },
+        ],
+      ],
+      stats: {
+        experience: { target: 3, suffix: "+", label: "Года в проде" },
+        websites: { target: 10, suffix: "+", label: "Сайтов и магазинов" },
+        products: { target: 3, suffix: "", label: "Крупных продукта" },
+      },
+      projectTypes: {
+        label: "Что строю",
+        tags: ["Лендинги", "E-commerce", "CRM", "Веб-приложения"],
+      },
+    },
     footer: {
       rights: "Все права защищены",
       builtWith: "Сделано на Next.js и Framer Motion",
@@ -73,6 +111,45 @@ export const translations = {
       meta: "Production-ready · Pixel-perfect · Performance-first",
       ctaProjects: "See projects",
       ctaGithub: "GitHub",
+    },
+    about: {
+      eyebrow: "About me",
+      titleBefore: "Turning briefs",
+      titleHighlight: "into shipped",
+      titleAfter: "products",
+      description:
+        "Clean code, polished motion, attention to speed and detail. No fluff.",
+      bio: [
+        [
+          { kind: "text", value: "Remote-first, " },
+          { kind: "accent", value: "three years" },
+          {
+            kind: "text",
+            value:
+              " shipping in production — from landings to CRM systems and large apps.",
+          },
+        ],
+        [
+          { kind: "text", value: "Under my belt — " },
+          { kind: "accent", value: "10+ sites and stores" },
+          { kind: "text", value: ", " },
+          { kind: "accent", value: "3 major products" },
+          {
+            kind: "text",
+            value:
+              ". Take the task — ship it: clean code, polished motion, attention to speed and detail.",
+          },
+        ],
+      ],
+      stats: {
+        experience: { target: 3, suffix: "+", label: "Years shipping" },
+        websites: { target: 10, suffix: "+", label: "Sites & stores" },
+        products: { target: 3, suffix: "", label: "Major products" },
+      },
+      projectTypes: {
+        label: "What I build",
+        tags: ["Landings", "E-commerce", "CRM", "Web apps"],
+      },
     },
     footer: {
       rights: "All rights reserved",
