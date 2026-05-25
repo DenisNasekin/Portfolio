@@ -4,8 +4,4 @@
   justify-content: center;
   min-height: 90vh;
   padding-block: var(--space-3xl);
-
-  &:first-of-type {
-    padding-top: calc(4.5rem + var(--space-3xl));
-  }
 }

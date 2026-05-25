@@ -1,0 +1,83 @@
+.wrap {
+  position: relative;
+  overflow: hidden;
+  // Edge fade so the strip doesn't look truncated.
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee linear infinite;
+  animation-duration: 32s;
+}
+
+.slow {
+  animation-duration: 48s;
+}
+
+.normal {
+  animation-duration: 32s;
+}
+
+.fast {
+  animation-duration: 18s;
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+
+.list {
+  display: flex;
+  gap: var(--space-xl);
+  padding-right: var(--space-xl);
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+
+  &::after {
+    content: "●";
+    color: var(--color-accent);
+    font-size: 0.5em;
+    transform: translateY(-0.15em);
+  }
+
+  &:last-child::after {
+    // The bullet still appears thanks to the next list duplicate.
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

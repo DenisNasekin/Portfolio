@@ -1,0 +1,246 @@
+@use "mixins" as m;
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // 100dvh handles mobile address bar so the marquee actually fits on phones.
+  min-height: 100dvh;
+  // Top padding accounts for the fixed header; nothing forced at the bottom.
+  padding-top: 4.5rem;
+  overflow: hidden;
+  isolation: isolate;
+  // Spotlight tracking variables — set from JS, with safe defaults.
+  --mx: 50%;
+  --my: 50%;
+}
+
+/* ───── Aurora (animated mesh) ───── */
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob1,
+.blob2,
+.blob3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.blob1 {
+  top: -10%;
+  left: -10%;
+  width: 60vmax;
+  height: 60vmax;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 60%);
+  animation: float1 22s ease-in-out infinite;
+}
+
+.blob2 {
+  top: 20%;
+  right: -15%;
+  width: 55vmax;
+  height: 55vmax;
+  background: radial-gradient(circle, #06b6d4 0%, transparent 60%);
+  animation: float2 26s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+.blob3 {
+  bottom: -20%;
+  left: 20%;
+  width: 50vmax;
+  height: 50vmax;
+  background: radial-gradient(circle, #ec4899 0%, transparent 60%);
+  animation: float3 30s ease-in-out infinite;
+  animation-delay: -14s;
+  opacity: 0.4;
+}
+
+[data-theme="light"] {
+  .blob1,
+  .blob2,
+  .blob3 {
+    opacity: 0.28;
+    mix-blend-mode: multiply;
+  }
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8%, 6%) scale(1.1); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-10%, 8%) scale(0.95); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6%, -10%) scale(1.05); }
+}
+
+/* ───── Spotlight (cursor-following) ───── */
+
+.spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    600px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--color-accent) 18%, transparent),
+    transparent 50%
+  );
+  transition: background 0.2s ease;
+
+  // Disable on touch devices — no cursor to track.
+  @media (hover: none) {
+    display: none;
+  }
+}
+
+/* ───── Layout ───── */
+
+.container {
+  position: relative;
+  z-index: 1;
+  // Takes all space between header and marquee so the content sits centered.
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-2xl);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 920px;
+  width: 100%;
+}
+
+/* ───── Headline ───── */
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 6.5rem);
+  font-weight: 600;
+  // Tight but leaves room for descenders (g, p, y, etc.).
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.25em;
+  // Each line gets its own line-box so descenders never collide with the next.
+  line-height: 1.05;
+}
+
+.word {
+  display: inline-block;
+}
+
+.highlight {
+  display: inline-block;
+  background: linear-gradient(120deg, #a78bfa 0%, #06b6d4 50%, #ec4899 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-shift 7s ease-in-out infinite;
+  // Extra room for descenders inside the clipped text-box.
+  padding-bottom: 0.08em;
+}
+
+[data-theme="light"] .highlight {
+  background: linear-gradient(120deg, #6d28d9 0%, #0891b2 50%, #db2777 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ───── Meta ───── */
+
+.meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  text-transform: uppercase;
+  margin-top: var(--space-xs);
+}
+
+.metaLine {
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-border-strong);
+  flex-shrink: 0;
+}
+
+.metaItem {
+  white-space: nowrap;
+}
+
+.metaDot {
+  color: var(--color-text-secondary);
+}
+
+/* ───── CTA ───── */
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* ───── Marquee ───── */
+
+.marquee {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--space-lg) var(--space-xl);
+  // A faint dividing line above the marquee so it reads as a separate strip
+  // rather than blending into the heading block.
+  border-top: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-background) 60%, transparent);
+}
+
+/* ───── Reduced motion ───── */
+
+@media (prefers-reduced-motion: reduce) {
+  .blob1,
+  .blob2,
+  .blob3,
+  .highlight {
+    animation: none;
+  }
+}

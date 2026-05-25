@@ -5,3 +5,6 @@ export { Button } from "./Button";
 export { SectionTitle } from "./SectionTitle";
 export { Tag } from "./Tag";
 export { Card } from "./Card";
+export { StatusBadge } from "./StatusBadge";
+export { Marquee } from "./Marquee";
+export { GitHubIcon } from "./Icons";

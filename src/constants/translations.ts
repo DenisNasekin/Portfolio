@@ -24,6 +24,16 @@ export const translations = {
       name: "Denis Nasekin",
       role: "Frontend Developer",
     },
+    hero: {
+      status: "Открыт к новым проектам",
+      lineOne: "Делаю",
+      lineHighlight: "живые",
+      lineTwo: "интерфейсы",
+      lineThree: "на React и Next.js.",
+      meta: "Production-ready · Pixel-perfect · Performance-first",
+      ctaProjects: "Смотреть проекты",
+      ctaGithub: "GitHub",
+    },
     footer: {
       rights: "Все права защищены",
       builtWith: "Сделано на Next.js и Framer Motion",
@@ -53,6 +63,16 @@ export const translations = {
     brand: {
       name: "Denis Nasekin",
       role: "Frontend Developer",
+    },
+    hero: {
+      status: "Open to new projects",
+      lineOne: "I craft",
+      lineHighlight: "delightful",
+      lineTwo: "interfaces",
+      lineThree: "with React and Next.js.",
+      meta: "Production-ready · Pixel-perfect · Performance-first",
+      ctaProjects: "See projects",
+      ctaGithub: "GitHub",
     },
     footer: {
       rights: "All rights reserved",

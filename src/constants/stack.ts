@@ -1,0 +1,22 @@
+// Tech names are universal — no need to localize.
+export const HERO_MARQUEE_STACK = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "JavaScript",
+  "HTML5",
+  "CSS3",
+  "SCSS",
+  "Tailwind CSS",
+  "Redux Toolkit",
+  "Zustand",
+  "React Query",
+  "REST API",
+  "GraphQL",
+  "Framer Motion",
+  "Vite",
+  "Node.js",
+  "Storybook",
+  "Git",
+  "Figma",
+] as const;
