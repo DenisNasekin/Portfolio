@@ -6,7 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
 } from "react";
 import { THEME_STORAGE_KEY, type Theme } from "@/types/theme";
 
@@ -18,30 +18,48 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-function readInitialTheme(): Theme {
-  if (typeof document === "undefined") return "dark";
+const THEME_CHANGE_EVENT = "portfolio:theme-change";
+
+function isTheme(value: string | null): value is Theme {
+  return value === "light" || value === "dark";
+}
+
+function getSnapshot(): Theme {
   const attr = document.documentElement.getAttribute("data-theme");
-  return attr === "light" ? "light" : "dark";
+  return isTheme(attr) ? attr : "dark";
+}
+
+// Server and first client render share this value, so hydration matches even
+// when ThemeScript later flips <html data-theme> to "light".
+function getServerSnapshot(): Theme {
+  return "dark";
+}
+
+function subscribe(callback: () => void) {
+  window.addEventListener(THEME_CHANGE_EVENT, callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    window.removeEventListener(THEME_CHANGE_EVENT, callback);
+    window.removeEventListener("storage", callback);
+  };
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Initial value matches what ThemeScript already set on <html>, so we don't
-  // re-render with a stale value on mount.
-  const [theme, setThemeState] = useState<Theme>(readInitialTheme);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  const applyTheme = useCallback((next: Theme) => {
+  const setTheme = useCallback((next: Theme) => {
     document.documentElement.setAttribute("data-theme", next);
     try {
       localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch {
       // localStorage may be unavailable (private mode, quota); silently ignore.
     }
-    setThemeState(next);
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
   }, []);
 
   const toggleTheme = useCallback(() => {
-    applyTheme(theme === "dark" ? "light" : "dark");
-  }, [theme, applyTheme]);
+    setTheme(theme === "dark" ? "light" : "dark");
+  }, [theme, setTheme]);
 
   // Follow OS changes only when the user hasn't made an explicit choice.
   useEffect(() => {
@@ -49,15 +67,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const onChange = (event: MediaQueryListEvent) => {
       const stored = localStorage.getItem(THEME_STORAGE_KEY);
       if (stored === "light" || stored === "dark") return;
-      applyTheme(event.matches ? "light" : "dark");
+      setTheme(event.matches ? "light" : "dark");
     };
     media.addEventListener("change", onChange);
     return () => media.removeEventListener("change", onChange);
-  }, [applyTheme]);
+  }, [setTheme]);
 
   const value = useMemo<ThemeContextValue>(
-    () => ({ theme, setTheme: applyTheme, toggleTheme }),
-    [theme, applyTheme, toggleTheme],
+    () => ({ theme, setTheme, toggleTheme }),
+    [theme, setTheme, toggleTheme],
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

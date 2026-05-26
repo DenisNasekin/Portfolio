@@ -72,6 +72,32 @@ export const translations = {
         tags: ["Лендинги", "E-commerce", "CRM", "Веб-приложения"],
       },
     },
+    stack: {
+      eyebrow: "Стек",
+      titleBefore: "Стек,",
+      titleHighlight: "на котором",
+      titleAfter: "строю в продакшене",
+      description:
+        "Подбираю инструменты под задачу. Не накручиваю стек ради хайпа — беру то, что даёт результат и не подводит под нагрузкой.",
+      categories: {
+        core: {
+          name: "Ядро",
+          tagline: "Реактивные интерфейсы, типобезопасность, SSR.",
+        },
+        styling: {
+          name: "Стили и анимация",
+          tagline: "От жёсткой сетки до плавных микро-взаимодействий.",
+        },
+        stateData: {
+          name: "Состояние и данные",
+          tagline: "Серверные данные, локальное состояние, кэш.",
+        },
+        tooling: {
+          name: "Окружение и инструменты",
+          tagline: "Сборка, дизайн, контроль версий, совместная работа.",
+        },
+      },
+    },
     footer: {
       rights: "Все права защищены",
       builtWith: "Сделано на Next.js и Framer Motion",
@@ -149,6 +175,32 @@ export const translations = {
       projectTypes: {
         label: "What I build",
         tags: ["Landings", "E-commerce", "CRM", "Web apps"],
+      },
+    },
+    stack: {
+      eyebrow: "Stack",
+      titleBefore: "The stack",
+      titleHighlight: "I ship",
+      titleAfter: "with in production",
+      description:
+        "I pick tools to fit the problem — no hype, no overengineering. Just what gets the job done and holds up under load.",
+      categories: {
+        core: {
+          name: "Core",
+          tagline: "Reactive UI, type safety, SSR.",
+        },
+        styling: {
+          name: "Styling & motion",
+          tagline: "From strict grids to smooth micro-interactions.",
+        },
+        stateData: {
+          name: "State & data",
+          tagline: "Server data, local state, caching.",
+        },
+        tooling: {
+          name: "Environment & tools",
+          tagline: "Build, design, version control, collaboration.",
+        },
       },
     },
     footer: {

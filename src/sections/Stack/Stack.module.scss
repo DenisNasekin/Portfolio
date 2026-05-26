@@ -1,0 +1,244 @@
+@use "mixins" as m;
+
+.stack {
+  position: relative;
+  padding-block: var(--space-4xl);
+  scroll-margin-top: 4.5rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ───── Decorative orb (cyan, bottom-left — balances About's purple top-right orb) ───── */
+
+.orb {
+  position: absolute;
+  bottom: -15%;
+  left: -10%;
+  width: 38rem;
+  height: 38rem;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, #06b6d4 35%, transparent) 0%,
+    transparent 60%
+  );
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: orb-drift-cyan 26s ease-in-out infinite alternate;
+}
+
+[data-theme="light"] .orb {
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+}
+
+@keyframes orb-drift-cyan {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(8%, -6%) scale(1.12);
+  }
+}
+
+/* ───── Header ───── */
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 820px;
+  margin-bottom: var(--space-2xl);
+}
+
+.eyebrow {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-card) 80%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.5vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.highlight {
+  display: inline-block;
+  // Cyan-leading gradient — mirrors the section's accent orb and visually
+  // distinguishes this title from About's purple-leading variant.
+  background: linear-gradient(120deg, #06b6d4 0%, #a78bfa 50%, #ec4899 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-shift 8s ease-in-out infinite;
+  padding-bottom: 0.08em;
+}
+
+[data-theme="light"] .highlight {
+  background: linear-gradient(120deg, #0891b2 0%, #6d28d9 50%, #db2777 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+/* ───── Grid ───── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  overflow: hidden;
+  transition: border-color var(--transition-base), transform var(--transition-base);
+
+  // Soft radial glow on hover, anchored at the icon corner so it feels like
+  // the icon is "lighting up" the card rather than a generic spotlight.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      circle at 0% 0%,
+      color-mix(in srgb, var(--color-accent) 18%, transparent),
+      transparent 55%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-accent) 50%,
+      transparent
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    transform: translateY(-3px);
+
+    &::before {
+      opacity: 1;
+    }
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: var(--space-2xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-accent) 24%, transparent),
+    color-mix(in srgb, var(--color-accent) 6%, transparent)
+  );
+  color: var(--color-accent);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.tagline {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-xs);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-sm) 0 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.625rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-background) 60%, transparent);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  transition: border-color var(--transition-base), color var(--transition-base),
+    transform var(--transition-base);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-1px);
+  }
+}

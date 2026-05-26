@@ -2,11 +2,12 @@ import { Container, SectionTitle } from "@/components/UI";
 import { NAV_SECTIONS } from "@/constants/navigation";
 import { About } from "@/sections/About";
 import { Hero } from "@/sections/Hero";
+import { Stack } from "@/sections/Stack";
 import styles from "./page.module.scss";
 
-// Hero and About are real; the rest are still placeholders and will be
+// Hero, About and Stack are real; the rest are still placeholders and will be
 // replaced section by section in upcoming stages.
-const IMPLEMENTED = new Set(["home", "about"]);
+const IMPLEMENTED = new Set(["home", "about", "stack"]);
 const PLACEHOLDER_SECTIONS = NAV_SECTIONS.filter((s) => !IMPLEMENTED.has(s.id));
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <Hero />
       <About />
+      <Stack />
 
       {PLACEHOLDER_SECTIONS.map((section) => (
         <Container key={section.id} as="section" id={section.id} className={styles.section}>
