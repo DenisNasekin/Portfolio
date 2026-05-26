@@ -7,4 +7,4 @@ export { Tag } from "./Tag";
 export { Card } from "./Card";
 export { StatusBadge } from "./StatusBadge";
 export { Marquee } from "./Marquee";
-export { GitHubIcon } from "./Icons";
+export { GitHubIcon, TelegramIcon } from "./Icons";

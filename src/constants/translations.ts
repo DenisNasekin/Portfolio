@@ -181,6 +181,22 @@ export const translations = {
         },
       },
     },
+    contact: {
+      eyebrow: "Контакты",
+      titleBefore: "Готов",
+      titleHighlight: "присоединиться",
+      titleAfter: "к вашей команде",
+      description:
+        "Ищу команду, где смогу расти и строить полезные продукты. Открыт к полной занятости и удалёнке — напишите, обсудим.",
+      status: "Открыт к предложениям",
+      primaryCta: "Написать на почту",
+      methodsLabel: "Или ловите в другом месте",
+      footnote: "МСК+2 · GMT+5 · Отвечаю в течение нескольких часов",
+      methods: {
+        telegram: { name: "Telegram", handle: "@denisnasekin" },
+        github: { name: "GitHub", handle: "@DenisNasekin" },
+      },
+    },
     footer: {
       rights: "Все права защищены",
       builtWith: "Сделано на Next.js и Framer Motion",
@@ -367,6 +383,22 @@ export const translations = {
           outcome:
             "Built nomination pages, explainer landings for each stage and the application forms.",
         },
+      },
+    },
+    contact: {
+      eyebrow: "Contact",
+      titleBefore: "Ready to",
+      titleHighlight: "join",
+      titleAfter: "your team",
+      description:
+        "Looking for a team where I can grow and build products that matter. Open to full-time and remote roles — drop me a line.",
+      status: "Open to opportunities",
+      primaryCta: "Email me",
+      methodsLabel: "Or find me elsewhere",
+      footnote: "GMT+5 · Usually reply within a few hours",
+      methods: {
+        telegram: { name: "Telegram", handle: "@denisnasekin" },
+        github: { name: "GitHub", handle: "@DenisNasekin" },
       },
     },
     footer: {
