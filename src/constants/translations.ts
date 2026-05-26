@@ -98,6 +98,89 @@ export const translations = {
         },
       },
     },
+    projects: {
+      eyebrow: "Проекты",
+      titleBefore: "Работы,",
+      titleHighlight: "которыми",
+      titleAfter: "горжусь",
+      description:
+        "От корпоративных SaaS до маркетплейсов и лендингов — коротко о том, что разрабатывал и поддерживал в продакшене.",
+      moreLabel: "Ещё работы",
+      empty: "В этой категории пока пусто.",
+      filters: {
+        all: "Все",
+        ecommerce: "E-commerce",
+        webapp: "Веб-приложения",
+        landing: "Лендинги",
+      },
+      categoryLabels: {
+        ecommerce: "E-commerce",
+        webapp: "Веб-приложение",
+        landing: "Лендинг",
+      },
+      cta: {
+        live: "Открыть",
+      },
+      outcomeLabel: "Что сделал",
+      items: {
+        unisender: {
+          name: "Unisender",
+          problem:
+            "Сервис рассылок федерального масштаба, миллионы писем в сутки. Любое обновление UI рискует сломать привычные сценарии маркетологов.",
+          outcome:
+            "Разрабатывал и поддерживал интерфейсы редактора писем, автоматизаций и кабинета — выкатывал улучшения, не ломая существующие сценарии.",
+        },
+        uncoEco: {
+          name: "UNCO Eco-Point",
+          problem:
+            "Маркетплейс «фермер ↔ кафе» с пунктами выдачи. Нужен был быстрый и понятный интерфейс для партнёров с разным уровнем диджитал-грамотности.",
+          outcome:
+            "Разработал фронтенд маркетплейса на Next.js и React — витрину, кабинеты партнёров, мультиязык и поток оформления заказов.",
+        },
+        issDigital: {
+          name: "ISS.digital",
+          problem:
+            "Корпоративная группа с портфелем B2B-продуктов (HappyDesk, Паркоматика и др.). Сайту нужна была единая презентация продуктов с разной механикой.",
+          outcome:
+            "Разрабатывал и поддерживал маркетинговый сайт и продуктовые страницы, привёл подачу к единому визуальному языку.",
+        },
+        foodFutures: {
+          name: "UNCO Food Futures",
+          problem:
+            "Pre-order сервис свежих продуктов от фермеров. Покупателю нужно быстро понять формат «карты» и оформить её без лишних кликов.",
+          outcome:
+            "Разработал клиентскую часть на Next.js — витрину, корзину, оформление карт, локации эко-пунктов и мультиязык.",
+        },
+        pinkit: {
+          name: "Pinkit",
+          problem:
+            "Платформа интеграций для Bitrix24 и amoCRM. Главная задача интерфейса — провести клиента от «у меня хаос» до готового сценария за несколько шагов.",
+          outcome:
+            "Разрабатывал интерфейсы конфигуратора интеграций, страницы шаблонов и калькулятор стоимости — снизил порог входа для новых пользователей.",
+        },
+        overseer: {
+          name: "Overseer",
+          problem:
+            "SaaS-мониторинг сайтов. Админу нужен интерфейс, в котором за 10 секунд видно — что упало, где и насколько критично.",
+          outcome:
+            "Разработал кабинет мониторинга: дашборд статусов, настройку проверок, историю инцидентов и интерфейс алертов.",
+        },
+        taigaClub: {
+          name: "Taiga Club",
+          problem:
+            "Активный туризм по России и Азии — десятки направлений и сезонов. Сайту нужна эмоция «хочу туда», а каталогу — понятная навигация.",
+          outcome:
+            "Разработал и развивал лендинги и страницы туров, добавил фильтры по направлениям и интерактивные элементы под бренд.",
+        },
+        premiaTogether: {
+          name: "Премия #МЫВМЕСТЕ",
+          problem:
+            "Премия с 14+ номинациями и многоступенчатым отбором. Сайт должен одновременно вдохновлять и проводить участников через сложный процесс подачи.",
+          outcome:
+            "Разработал страницы номинаций, лендинги-объяснялки этапов и формы подачи заявок.",
+        },
+      },
+    },
     footer: {
       rights: "Все права защищены",
       builtWith: "Сделано на Next.js и Framer Motion",
@@ -200,6 +283,89 @@ export const translations = {
         tooling: {
           name: "Environment & tools",
           tagline: "Build, design, version control, collaboration.",
+        },
+      },
+    },
+    projects: {
+      eyebrow: "Projects",
+      titleBefore: "Work",
+      titleHighlight: "I've shipped",
+      titleAfter: "in production",
+      description:
+        "From corporate SaaS to marketplaces and landings — a quick look at what I've built and maintained in production.",
+      moreLabel: "More work",
+      empty: "Nothing in this category yet.",
+      filters: {
+        all: "All",
+        ecommerce: "E-commerce",
+        webapp: "Web apps",
+        landing: "Landings",
+      },
+      categoryLabels: {
+        ecommerce: "E-commerce",
+        webapp: "Web app",
+        landing: "Landing",
+      },
+      cta: {
+        live: "Visit",
+      },
+      outcomeLabel: "What I did",
+      items: {
+        unisender: {
+          name: "Unisender",
+          problem:
+            "Email-marketing service at federal scale — millions of sends a day. Any UI shift risks breaking flows marketers depend on.",
+          outcome:
+            "Built and maintained editor, automation and dashboard screens — shipped improvements without regressing flows existing customers rely on.",
+        },
+        uncoEco: {
+          name: "UNCO Eco-Point",
+          problem:
+            "A farmer-to-café marketplace with pickup points. The interface had to feel obvious for partners across the digital-literacy spectrum.",
+          outcome:
+            "Built the marketplace frontend on Next.js and React — storefront, partner dashboards, multi-language support and order flow.",
+        },
+        issDigital: {
+          name: "ISS.digital",
+          problem:
+            "A corporate group with a portfolio of B2B products (HappyDesk, Parkomatika and more). The site had to tell one coherent story across very different mechanics.",
+          outcome:
+            "Built and maintained the marketing site and product pages, unified the visual language across the portfolio.",
+        },
+        foodFutures: {
+          name: "UNCO Food Futures",
+          problem:
+            "Pre-order service for fresh farm produce. Shoppers needed to grasp the \"card\" format and check out in as few clicks as possible.",
+          outcome:
+            "Built the customer-facing app on Next.js — storefront, checkout, eco-point locator and multi-language support.",
+        },
+        pinkit: {
+          name: "Pinkit",
+          problem:
+            "An integration platform for Bitrix24 and amoCRM. The UI had to walk a customer from \"I have chaos\" to a working scenario in a handful of clicks.",
+          outcome:
+            "Built configurator screens, template pages and a pricing calculator — lowered the entry bar for new users.",
+        },
+        overseer: {
+          name: "Overseer",
+          problem:
+            "An uptime monitoring SaaS. The dashboard had to surface what broke, where and how badly — at a glance.",
+          outcome:
+            "Built the monitoring console: status dashboard, check configuration, incident history and alert routing.",
+        },
+        taigaClub: {
+          name: "Taiga Club",
+          problem:
+            "Adventure tours across Russia and Asia — dozens of destinations and seasons. The site had to evoke wanderlust and stay easy to navigate.",
+          outcome:
+            "Built and evolved landings and tour pages, added destination filters and brand-driven interactive elements.",
+        },
+        premiaTogether: {
+          name: "#WeAreTogether Prize",
+          problem:
+            "An award with 14+ nominations and a multi-stage selection process. The site had to inspire and walk applicants through complex flows.",
+          outcome:
+            "Built nomination pages, explainer landings for each stage and the application forms.",
         },
       },
     },
